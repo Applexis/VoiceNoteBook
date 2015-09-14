@@ -45,10 +45,10 @@
             </objects>
             <point key="canvasLocation" x="665" y="319"/>
         </scene>
-        <!--View Controller-->
+        <!--Notes List View Controller-->
         <scene sceneID="of0-QH-Ugs">
             <objects>
-                <viewController id="d5U-Y9-302" sceneMemberID="viewController">
+                <viewController id="d5U-Y9-302" customClass="NotesListViewController" customModule="VoiceNoteBook" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="xzC-uR-xSh"/>
                         <viewControllerLayoutGuide type="bottom" id="ICW-Q7-i4m"/>

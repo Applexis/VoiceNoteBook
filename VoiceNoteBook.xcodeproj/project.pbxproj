@@ -14,6 +14,9 @@
 		FA1D4D351BA6A87F008E4ED9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = FA1D4D341BA6A87F008E4ED9 /* Images.xcassets */; };
 		FA1D4D381BA6A87F008E4ED9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1D4D361BA6A87F008E4ED9 /* LaunchScreen.xib */; };
 		FA1D4D441BA6A87F008E4ED9 /* VoiceNoteBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D431BA6A87F008E4ED9 /* VoiceNoteBookTests.swift */; };
+		FA73AFE81BA6D69900426E23 /* NoteTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AFE71BA6D69900426E23 /* NoteTableViewCell.swift */; };
+		FA73AFEA1BA6D6BB00426E23 /* NoteTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA73AFE91BA6D6BB00426E23 /* NoteTableViewCell.xib */; };
+		FA73AFEC1BA6E3FD00426E23 /* AudioUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA73AFEB1BA6E3FD00426E23 /* AudioUtil.swift */; };
 		FAD6F0931BA6AFFC0081DF81 /* AudioMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD6F0921BA6AFFC0081DF81 /* AudioMeterView.m */; };
 		FAD6F0BB1BA6C3EF0081DF81 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6F0BA1BA6C3EF0081DF81 /* FileUtil.swift */; };
 		FAD6F0BD1BA6C5D80081DF81 /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6F0BC1BA6C5D80081DF81 /* NotesListViewController.swift */; };
@@ -41,6 +44,9 @@
 		FA1D4D3D1BA6A87F008E4ED9 /* VoiceNoteBookTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VoiceNoteBookTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1D4D421BA6A87F008E4ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA1D4D431BA6A87F008E4ED9 /* VoiceNoteBookTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VoiceNoteBookTests.swift; sourceTree = "<group>"; };
+		FA73AFE71BA6D69900426E23 /* NoteTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoteTableViewCell.swift; sourceTree = "<group>"; };
+		FA73AFE91BA6D6BB00426E23 /* NoteTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = NoteTableViewCell.xib; path = VoiceNoteBook/Resources/NoteTableViewCell.xib; sourceTree = SOURCE_ROOT; };
+		FA73AFEB1BA6E3FD00426E23 /* AudioUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioUtil.swift; sourceTree = "<group>"; };
 		FAD6F0901BA6AFFC0081DF81 /* VoiceNoteBook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VoiceNoteBook-Bridging-Header.h"; path = "Vendor/AudioUtils/VoiceNoteBook-Bridging-Header.h"; sourceTree = "<group>"; };
 		FAD6F0911BA6AFFC0081DF81 /* AudioMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioMeterView.h; sourceTree = "<group>"; };
 		FAD6F0921BA6AFFC0081DF81 /* AudioMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioMeterView.m; sourceTree = "<group>"; };
@@ -140,6 +146,7 @@
 		FA1D4D4E1BA6A9BC008E4ED9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA73AFE91BA6D6BB00426E23 /* NoteTableViewCell.xib */,
 			);
 			name = Resources;
 			path = Vendor;
@@ -172,6 +179,7 @@
 		FA1D4D521BA6AA30008E4ED9 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				FA73AFE71BA6D69900426E23 /* NoteTableViewCell.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -189,6 +197,7 @@
 			isa = PBXGroup;
 			children = (
 				FAD6F0BA1BA6C3EF0081DF81 /* FileUtil.swift */,
+				FA73AFEB1BA6E3FD00426E23 /* AudioUtil.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -276,6 +285,7 @@
 				FA1D4D331BA6A87F008E4ED9 /* Main.storyboard in Resources */,
 				FA1D4D381BA6A87F008E4ED9 /* LaunchScreen.xib in Resources */,
 				FA1D4D351BA6A87F008E4ED9 /* Images.xcassets in Resources */,
+				FA73AFEA1BA6D6BB00426E23 /* NoteTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,9 +305,11 @@
 			files = (
 				FAD6F0931BA6AFFC0081DF81 /* AudioMeterView.m in Sources */,
 				FA1D4D301BA6A87F008E4ED9 /* MainViewController.swift in Sources */,
+				FA73AFEC1BA6E3FD00426E23 /* AudioUtil.swift in Sources */,
 				FA1D4D2B1BA6A87E008E4ED9 /* AppDelegate.swift in Sources */,
 				FA1D4D2E1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodeld in Sources */,
 				FAD6F0BD1BA6C5D80081DF81 /* NotesListViewController.swift in Sources */,
+				FA73AFE81BA6D69900426E23 /* NoteTableViewCell.swift in Sources */,
 				FAD6F0BB1BA6C3EF0081DF81 /* FileUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

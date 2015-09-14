@@ -11,15 +11,14 @@ import AVFoundation
 
 var kMeterViewSideLength: CGFloat = 160.0;
 
-class MainViewController: UIViewController, AVAudioRecorderDelegate {
+class MainViewController: UIViewController, AudioUtilDelegate {
 
 
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var rightBarButtonItem: UIBarButtonItem!
     
     var audioMeterView: AudioMeterView = AudioMeterView(frame: CGRectZero)
-    
-    var audioRecorder: AVAudioRecorder?
+    var audioUtil: AudioUtil = AudioUtil()
 
     override func loadView() {
         super.loadView()
@@ -33,39 +32,11 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
         
         recordButton.addTarget(self, action: Selector("recordBegin:"), forControlEvents: UIControlEvents.TouchDown);
         recordButton.addTarget(self, action: Selector("recordEnd:"), forControlEvents: UIControlEvents.TouchUpInside);
+        recordButton.addTarget(self, action: Selector("recordEnd:"), forControlEvents: UIControlEvents.TouchUpOutside);
 
+        audioUtil.delegate = self
         initViews();
         
-        // recorder
-        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
-        let docsDir = dirPaths[0] as! String
-        let soundFilePath = docsDir.stringByAppendingPathComponent("sound.caf")
-        let soundFileURL = NSURL(fileURLWithPath: soundFilePath)
-        let recordSettings =
-            [AVEncoderAudioQualityKey: AVAudioQuality.Min.rawValue,
-            AVEncoderBitRateKey: 16,
-            AVNumberOfChannelsKey: 2,
-            AVSampleRateKey: 44100.0]
-        
-        var error: NSError?
-        
-        let audioSession = AVAudioSession.sharedInstance()
-        audioSession.setCategory(AVAudioSessionCategoryPlayAndRecord, error: &error)
-        
-        if let err = error {
-            println("audioSession error: \(err.localizedDescription)")
-        }
-        
-        audioRecorder = AVAudioRecorder(URL: soundFileURL,
-            settings: recordSettings as [NSObject : AnyObject], error: &error)
-        
-        if let err = error {
-            println("audioSession error: \(err.localizedDescription)")
-        } else {
-            audioRecorder?.prepareToRecord()
-        }
-        
-        audioRecorder?.delegate = self
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -83,39 +54,33 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
     // Mark: - Actions
     
     func recordBegin(sender: AnyObject) {
-        if audioRecorder?.recording == false {
-            audioRecorder?.record()
-        }
-        
-        NSLog("begin")
+        let fileName = audioUtil.recordBegin()
+        NSLog("begin record, fileName: %@", fileName)
     }
     
     func recordEnd(sender: AnyObject) {
-        if audioRecorder?.recording == true {
-            audioRecorder?.stop()
-        }
-
-        NSLog("end")
+        audioUtil.recordEnd()
+        NSLog("end recording")
     }
     
-    
+
     // Mark: - AudioRecorderDelegate
     
-    func audioRecorderDidFinishRecording(recorder: AVAudioRecorder!, successfully flag: Bool) {
-        println("finish")
+    func audioUtil(audioUtil: AudioUtil, didReceiveSoundLevelUpdate audioRecorder: AVAudioRecorder) {
+        audioRecorder.updateMeters()
+        let averagePower: CGFloat = CGFloat(audioRecorder.averagePowerForChannel(0))
+        let peakPower: CGFloat = CGFloat(audioRecorder.peakPowerForChannel(0))
+        
+        self.audioMeterView.updateViewWithPeakPower(peakPower, averagePower: averagePower)
     }
     
-    func audioRecorderEncodeErrorDidOccur(recorder: AVAudioRecorder!, error: NSError!) {
-        println("Audio Record Encode Error")
-    }
-
-
     // Mark: - Private Method
     
     func initViews() {
         recordButton.setTitle(NSLocalizedString("Touch to begin recording", comment: ""), forState: UIControlState.Normal)
         audioMeterView.frame = CGRectMake((self.view.frame.width - kMeterViewSideLength) / 2, 120, kMeterViewSideLength, kMeterViewSideLength)
     }
+    
     
     func checkAVPermission() {
         AVAudioSession.sharedInstance().requestRecordPermission { (granted) -> Void in

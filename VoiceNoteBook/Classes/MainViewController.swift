@@ -22,7 +22,7 @@ class MainViewController: UIViewController, AudioUtilDelegate {
 
     override func loadView() {
         super.loadView()
-//        self.view.addSubview(audioMeterView)
+        self.view.addSubview(audioMeterView)
     }
     
     override func viewDidLoad() {
@@ -37,6 +37,7 @@ class MainViewController: UIViewController, AudioUtilDelegate {
         audioUtil.delegate = self
         initViews();
         
+        audioMeterView.hidden = true
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -47,7 +48,6 @@ class MainViewController: UIViewController, AudioUtilDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     
@@ -56,10 +56,18 @@ class MainViewController: UIViewController, AudioUtilDelegate {
     func recordBegin(sender: AnyObject) {
         let fileName = audioUtil.recordBegin()
         NSLog("begin record, fileName: %@", fileName)
+        audioMeterView.hidden = false
+        audioMeterView.recording = true;
+
     }
     
     func recordEnd(sender: AnyObject) {
         audioUtil.recordEnd()
+        audioMeterView.hidden = true
+        audioMeterView.updateViewWithPeakPower(-100, averagePower:-100)
+        audioMeterView.recording = false
+        audioMeterView.clearHintMessage()
+
         NSLog("end recording")
     }
     

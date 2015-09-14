@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		FA173BD61BA6F07D009A6885 /* PlayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA173BD51BA6F07D009A6885 /* PlayUtil.swift */; };
+		FA173BD91BA6FF8C009A6885 /* audio-cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA173BD71BA6FF8C009A6885 /* audio-cancel@2x.png */; };
+		FA173BDA1BA6FF8C009A6885 /* audio-microphone@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA173BD81BA6FF8C009A6885 /* audio-microphone@2x.png */; };
 		FA1D4D2B1BA6A87E008E4ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D2A1BA6A87E008E4ED9 /* AppDelegate.swift */; };
 		FA1D4D2E1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D2C1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodeld */; };
 		FA1D4D301BA6A87F008E4ED9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D2F1BA6A87F008E4ED9 /* MainViewController.swift */; };
@@ -35,6 +37,8 @@
 
 /* Begin PBXFileReference section */
 		FA173BD51BA6F07D009A6885 /* PlayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayUtil.swift; sourceTree = "<group>"; };
+		FA173BD71BA6FF8C009A6885 /* audio-cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio-cancel@2x.png"; sourceTree = "<group>"; };
+		FA173BD81BA6FF8C009A6885 /* audio-microphone@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "audio-microphone@2x.png"; sourceTree = "<group>"; };
 		FA1D4D251BA6A87E008E4ED9 /* VoiceNoteBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceNoteBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1D4D291BA6A87E008E4ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA1D4D2A1BA6A87E008E4ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -148,6 +152,8 @@
 		FA1D4D4E1BA6A9BC008E4ED9 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				FA173BD71BA6FF8C009A6885 /* audio-cancel@2x.png */,
+				FA173BD81BA6FF8C009A6885 /* audio-microphone@2x.png */,
 				FA73AFE91BA6D6BB00426E23 /* NoteTableViewCell.xib */,
 			);
 			name = Resources;
@@ -285,6 +291,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FA173BD91BA6FF8C009A6885 /* audio-cancel@2x.png in Resources */,
+				FA173BDA1BA6FF8C009A6885 /* audio-microphone@2x.png in Resources */,
 				FA1D4D331BA6A87F008E4ED9 /* Main.storyboard in Resources */,
 				FA1D4D381BA6A87F008E4ED9 /* LaunchScreen.xib in Resources */,
 				FA1D4D351BA6A87F008E4ED9 /* Images.xcassets in Resources */,

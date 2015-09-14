@@ -103,13 +103,14 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: false)
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath) as! NoteTableViewCell
-        
-        if self.playingFileName != nil && cell.fileName == self.playingFileName {
-            stopPlay()
-        } else {
-            playFile(cell.fileName!)
+        if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NoteTableViewCell {
+            if self.playingFileName != nil && cell.fileName == self.playingFileName {
+                stopPlay()
+            } else {
+                playFile(cell.fileName!)
+            }
         }
+        
 
     }
     
@@ -155,10 +156,11 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
     private func visibleCellForFileName(fileName: String?) -> NoteTableViewCell? {
         if let oldFileName = fileName {
             if let indexPath = indexPathForNoteObj(oldFileName) {
-                let cell = tableView.cellForRowAtIndexPath(indexPath) as! NoteTableViewCell
-                let visibleCells = tableView.visibleCells() as! [NoteTableViewCell]
-                if find(visibleCells, cell) != nil {
-                    return cell
+                if let cell = tableView.cellForRowAtIndexPath(indexPath) as? NoteTableViewCell {
+                    let visibleCells = tableView.visibleCells() as! [NoteTableViewCell]
+                    if find(visibleCells, cell) != nil {
+                        return cell
+                    }
                 }
             }
         }

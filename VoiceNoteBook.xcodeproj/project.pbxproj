@@ -15,6 +15,8 @@
 		FA1D4D381BA6A87F008E4ED9 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = FA1D4D361BA6A87F008E4ED9 /* LaunchScreen.xib */; };
 		FA1D4D441BA6A87F008E4ED9 /* VoiceNoteBookTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D431BA6A87F008E4ED9 /* VoiceNoteBookTests.swift */; };
 		FAD6F0931BA6AFFC0081DF81 /* AudioMeterView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD6F0921BA6AFFC0081DF81 /* AudioMeterView.m */; };
+		FAD6F0BB1BA6C3EF0081DF81 /* FileUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6F0BA1BA6C3EF0081DF81 /* FileUtil.swift */; };
+		FAD6F0BD1BA6C5D80081DF81 /* NotesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD6F0BC1BA6C5D80081DF81 /* NotesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,7 +34,7 @@
 		FA1D4D291BA6A87E008E4ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA1D4D2A1BA6A87E008E4ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		FA1D4D2D1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = VoiceNoteBook.xcdatamodel; sourceTree = "<group>"; };
-		FA1D4D2F1BA6A87F008E4ED9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = ../MainViewController.swift; sourceTree = "<group>"; };
+		FA1D4D2F1BA6A87F008E4ED9 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		FA1D4D321BA6A87F008E4ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		FA1D4D341BA6A87F008E4ED9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		FA1D4D371BA6A87F008E4ED9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -42,6 +44,8 @@
 		FAD6F0901BA6AFFC0081DF81 /* VoiceNoteBook-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "VoiceNoteBook-Bridging-Header.h"; path = "Vendor/AudioUtils/VoiceNoteBook-Bridging-Header.h"; sourceTree = "<group>"; };
 		FAD6F0911BA6AFFC0081DF81 /* AudioMeterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioMeterView.h; sourceTree = "<group>"; };
 		FAD6F0921BA6AFFC0081DF81 /* AudioMeterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioMeterView.m; sourceTree = "<group>"; };
+		FAD6F0BA1BA6C3EF0081DF81 /* FileUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileUtil.swift; sourceTree = "<group>"; };
+		FAD6F0BC1BA6C5D80081DF81 /* NotesListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +129,7 @@
 		FA1D4D4D1BA6A9B3008E4ED9 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				FAD6F0B91BA6C3D60081DF81 /* Utils */,
 				FA1D4D521BA6AA30008E4ED9 /* View */,
 				FA1D4D511BA6AA2A008E4ED9 /* Model */,
 				FA1D4D501BA6AA24008E4ED9 /* Controller */,
@@ -152,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				FA1D4D2F1BA6A87F008E4ED9 /* MainViewController.swift */,
+				FAD6F0BC1BA6C5D80081DF81 /* NotesListViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -177,6 +183,14 @@
 				FAD6F0921BA6AFFC0081DF81 /* AudioMeterView.m */,
 			);
 			path = AudioUtils;
+			sourceTree = "<group>";
+		};
+		FAD6F0B91BA6C3D60081DF81 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				FAD6F0BA1BA6C3EF0081DF81 /* FileUtil.swift */,
+			);
+			name = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +297,8 @@
 				FA1D4D301BA6A87F008E4ED9 /* MainViewController.swift in Sources */,
 				FA1D4D2B1BA6A87E008E4ED9 /* AppDelegate.swift in Sources */,
 				FA1D4D2E1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodeld in Sources */,
+				FAD6F0BD1BA6C5D80081DF81 /* NotesListViewController.swift in Sources */,
+				FAD6F0BB1BA6C3EF0081DF81 /* FileUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +439,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = VoiceNoteBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -440,6 +457,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = VoiceNoteBook/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",

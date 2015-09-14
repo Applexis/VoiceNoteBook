@@ -23,7 +23,7 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
 
     override func loadView() {
         super.loadView()
-        self.view.addSubview(audioMeterView)
+//        self.view.addSubview(audioMeterView)
     }
     
     override func viewDidLoad() {
@@ -36,11 +36,8 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
 
         initViews();
         
-        
         // recorder
-        let dirPaths =
-        NSSearchPathForDirectoriesInDomains(.DocumentDirectory,
-            .UserDomainMask, true)
+        let dirPaths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
         let docsDir = dirPaths[0] as! String
         let soundFilePath = docsDir.stringByAppendingPathComponent("sound.caf")
         let soundFileURL = NSURL(fileURLWithPath: soundFilePath)
@@ -69,6 +66,11 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
         }
         
         audioRecorder?.delegate = self
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        checkAVPermission()
     }
     
 
@@ -113,6 +115,15 @@ class MainViewController: UIViewController, AVAudioRecorderDelegate {
     func initViews() {
         recordButton.setTitle(NSLocalizedString("Touch to begin recording", comment: ""), forState: UIControlState.Normal)
         audioMeterView.frame = CGRectMake((self.view.frame.width - kMeterViewSideLength) / 2, 120, kMeterViewSideLength, kMeterViewSideLength)
+    }
+    
+    func checkAVPermission() {
+        AVAudioSession.sharedInstance().requestRecordPermission { (granted) -> Void in
+            if !granted {
+                let alertView = UIAlertView(title: "Error", message: "You cannot access microphone until you set it in your settings.", delegate: nil, cancelButtonTitle: "OK")
+                alertView.show();
+            }
+        }
     }
 
 }

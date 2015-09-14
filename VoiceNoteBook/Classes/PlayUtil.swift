@@ -21,13 +21,10 @@ class PlayUtil: NSObject, AVAudioPlayerDelegate {
         
         var soundUrl = NSURL(fileURLWithPath: FileUtil.getWholePathFromFileName(fileName))
         
-//        // Removed deprecated use of AVAudioSessionDelegate protocol
-//        AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback, error: nil)
-//        AVAudioSession.sharedInstance().setActive(true, error: nil)
-        
         var error:NSError?
 
-        audioPlayer? = AVAudioPlayer(contentsOfURL: soundUrl, error: &error)
+        audioPlayer = AVAudioPlayer(contentsOfURL: soundUrl, error: &error)
+        audioPlayer?.delegate = self;
         audioPlayer?.prepareToPlay()
         audioPlayer?.play()
     }

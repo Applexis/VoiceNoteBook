@@ -28,10 +28,13 @@ class AudioUtil: NSObject, AVAudioRecorderDelegate {
         let soundFilePath = docsDir.stringByAppendingPathComponent(newFileName)
         let soundFileURL = NSURL(fileURLWithPath: soundFilePath)
         let recordSettings =
-        [AVEncoderAudioQualityKey: AVAudioQuality.Min.rawValue,
-            AVEncoderBitRateKey: 16,
-            AVNumberOfChannelsKey: 2,
-            AVSampleRateKey: 44100.0]
+        [
+//            AVEncoderAudioQualityKey: AVAudioQuality.Min.rawValue,
+//            AVEncoderBitRateKey: 16,
+            AVNumberOfChannelsKey: 1,
+            AVSampleRateKey: 16000.0,
+            AVFormatIDKey: kAudioFormatMPEG4AAC
+        ]
         
         var error: NSError?
         

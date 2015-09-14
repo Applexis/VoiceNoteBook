@@ -8,12 +8,14 @@
 
 import UIKit
 
-class NotesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NoteTableViewCellDelegate {
+class NotesListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, NoteTableViewCellDelegate, PlayUtilDelegate {
 
     var tableView: UITableView!
     var identifier = "NoteIdentifier"
     var notes: [String] = []
     var playingFileName: String?
+    
+    var playUtil: PlayUtil = PlayUtil()
     
     override func loadView() {
         super.loadView()
@@ -29,12 +31,18 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         tableView.tableFooterView = UIView(frame: CGRectZero)
         self.tableView.registerNib(UINib(nibName: "NoteTableViewCell", bundle: nil), forCellReuseIdentifier: identifier)
-        // Do any additional setup after loading the view.
+        
+        playUtil.delegate = self;
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         refreshUI()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        playUtil.stop()
     }
 
     override func didReceiveMemoryWarning() {
@@ -50,6 +58,28 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
         tableView.reloadData()
     }
     
+    func playFile(fileName: String) {
+        if let oldCell = visibleCellForFileName(self.playingFileName) {
+            oldCell.playing = false
+        }
+        playUtil.stop()
+
+        self.playingFileName = fileName
+        
+        if let cell = visibleCellForFileName(fileName) {
+            cell.playing = true
+        }
+        playUtil.playWithFileName(fileName)
+    }
+    
+    func stopPlay() {
+        if let cell = visibleCellForFileName(self.playingFileName) {
+            cell.playing = false
+        }
+        
+        self.playingFileName = nil
+        playUtil.stop()
+    }
     
     // Mark: - UITableViewDataSource
     
@@ -62,7 +92,6 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
         
         if cell == nil {
             cell = NoteTableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: identifier)
-            cell?.delegate = self
         }
         
         configureCell(cell!, atIndexPath: indexPath)
@@ -72,9 +101,9 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func configureCell(cell: NoteTableViewCell, atIndexPath indexPath: NSIndexPath) {
         let fileName = noteObjAtIndexPath(indexPath)
-        cell.fileName = fileName.stringByDeletingPathExtension
+        cell.fileName = fileName
         cell.playing = self.playingFileName == fileName
-        
+        cell.delegate = self
     }
     
     func noteObjAtIndexPath(indexPath: NSIndexPath) -> String {
@@ -93,26 +122,32 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
     
     func noteTableViewButtonPressed(cell: NoteTableViewCell, withFileName fileName: String) {
         if fileName == self.playingFileName {
-            // should stop
-            self.playingFileName = nil
-            cell.playing = false
-            
-            // stop playing
+            stopPlay()
         } else {
-            if let oldFileName = self.playingFileName {
-                if let indexPath = indexPathForNoteObj(oldFileName) {
-                    let cell = tableView.cellForRowAtIndexPath(indexPath) as! NoteTableViewCell
-                    let visibleCells = tableView.visibleCells() as! [NoteTableViewCell]
-                    if find(visibleCells, cell) != nil {
-                        cell.playing = false
-                    }
+            playFile(fileName)
+        }
+    }
+    
+    
+    // Mark: - PlayUtilDelegate
+    
+    func playUtilDidFinishPlaying(playUtil: PlayUtil!, successfully flag: Bool) {
+        stopPlay()
+    }
+    
+    
+    // Mark: - Private Methods
+    
+    private func visibleCellForFileName(fileName: String?) -> NoteTableViewCell? {
+        if let oldFileName = fileName {
+            if let indexPath = indexPathForNoteObj(oldFileName) {
+                let cell = tableView.cellForRowAtIndexPath(indexPath) as! NoteTableViewCell
+                let visibleCells = tableView.visibleCells() as! [NoteTableViewCell]
+                if find(visibleCells, cell) != nil {
+                    return cell
                 }
             }
-            
-            self.playingFileName = fileName
-            cell.playing = true
-            
-            // stop playing and play this one
         }
+        return nil
     }
 }

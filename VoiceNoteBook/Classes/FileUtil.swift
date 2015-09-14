@@ -16,7 +16,7 @@ class FileUtil: NSObject {
         return formatter
     }()
     
-    static var defaultPathExtention = "caf"
+    static var defaultPathExtention = "m4a"
 
     class func getAllFileNamesInDocumentDic(pathExtention: String = defaultPathExtention) -> [String] {
         let documentsUrl =  NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)[0] as! NSURL
@@ -30,5 +30,12 @@ class FileUtil: NSObject {
     
     class func newFileName() -> String {
         return formatter.stringFromDate(NSDate()) + "." + defaultPathExtention
+    }
+    
+    class func getWholePathFromFileName(fileName: String) -> String {
+        let paths = NSSearchPathForDirectoriesInDomains(.DocumentDirectory, .UserDomainMask, true)
+        let documentsDirectory = paths[0] as! String
+
+        return "\(documentsDirectory)/\(fileName)"
     }
 }

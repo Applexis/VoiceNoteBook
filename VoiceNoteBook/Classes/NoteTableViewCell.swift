@@ -21,7 +21,7 @@ class NoteTableViewCell: UITableViewCell {
     
     var fileName: String? {
         didSet {
-            titleLabel.text = fileName
+            titleLabel.text = fileName?.stringByDeletingPathExtension
         }
     }
     
@@ -46,10 +46,8 @@ class NoteTableViewCell: UITableViewCell {
     
     func buttonPressed(sender: AnyObject) {
         self.playing = !self.playing
-        if delegate != nil {
-            if let fname = self.fileName {
-                delegate?.noteTableViewButtonPressed?(self, withFileName: fname)
-            }
+        if let fname = self.fileName {
+            delegate?.noteTableViewButtonPressed?(self, withFileName: fname)
         }
     }
 }

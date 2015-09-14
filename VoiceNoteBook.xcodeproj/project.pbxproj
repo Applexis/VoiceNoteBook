@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA173BD61BA6F07D009A6885 /* PlayUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA173BD51BA6F07D009A6885 /* PlayUtil.swift */; };
 		FA1D4D2B1BA6A87E008E4ED9 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D2A1BA6A87E008E4ED9 /* AppDelegate.swift */; };
 		FA1D4D2E1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D2C1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodeld */; };
 		FA1D4D301BA6A87F008E4ED9 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = FA1D4D2F1BA6A87F008E4ED9 /* MainViewController.swift */; };
@@ -33,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		FA173BD51BA6F07D009A6885 /* PlayUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayUtil.swift; sourceTree = "<group>"; };
 		FA1D4D251BA6A87E008E4ED9 /* VoiceNoteBook.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VoiceNoteBook.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA1D4D291BA6A87E008E4ED9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		FA1D4D2A1BA6A87E008E4ED9 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -198,6 +200,7 @@
 			children = (
 				FAD6F0BA1BA6C3EF0081DF81 /* FileUtil.swift */,
 				FA73AFEB1BA6E3FD00426E23 /* AudioUtil.swift */,
+				FA173BD51BA6F07D009A6885 /* PlayUtil.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				FA1D4D301BA6A87F008E4ED9 /* MainViewController.swift in Sources */,
 				FA73AFEC1BA6E3FD00426E23 /* AudioUtil.swift in Sources */,
 				FA1D4D2B1BA6A87E008E4ED9 /* AppDelegate.swift in Sources */,
+				FA173BD61BA6F07D009A6885 /* PlayUtil.swift in Sources */,
 				FA1D4D2E1BA6A87E008E4ED9 /* VoiceNoteBook.xcdatamodeld in Sources */,
 				FAD6F0BD1BA6C5D80081DF81 /* NotesListViewController.swift in Sources */,
 				FA73AFE81BA6D69900426E23 /* NoteTableViewCell.swift in Sources */,

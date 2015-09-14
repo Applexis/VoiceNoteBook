@@ -93,7 +93,10 @@ class AudioUtil: NSObject, AVAudioRecorderDelegate {
                 
                 dispatch_async(dispatch_get_main_queue()) {
                     () -> Void in
-                    self.delegate?.audioUtil?(self, didReceiveSoundLevelUpdate: self.audioRecorder!)
+                    if let recorder = self.audioRecorder {
+                        self.delegate?.audioUtil?(self, didReceiveSoundLevelUpdate: recorder)
+                        
+                    }
                 }
                 NSThread.sleepForTimeInterval(0.05)
             } while (self.audioRecorder?.recording == true);

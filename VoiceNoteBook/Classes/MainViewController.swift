@@ -58,7 +58,6 @@ class MainViewController: UIViewController, AudioUtilDelegate {
         NSLog("begin record, fileName: %@", fileName)
         audioMeterView.hidden = false
         audioMeterView.recording = true;
-
     }
     
     func recordEnd(sender: AnyObject) {
@@ -85,7 +84,9 @@ class MainViewController: UIViewController, AudioUtilDelegate {
     // Mark: - Private Method
     
     func initViews() {
-        recordButton.setTitle(NSLocalizedString("Touch to begin recording", comment: ""), forState: UIControlState.Normal)
+        recordButton.setTitle(NSLocalizedString("Touch to record", comment: ""), forState: UIControlState.Normal)
+        recordButton.setTitle(NSLocalizedString("Release to add", comment: ""), forState: UIControlState.Highlighted)
+
         audioMeterView.frame = CGRectMake((self.view.frame.width - kMeterViewSideLength) / 2, 120, kMeterViewSideLength, kMeterViewSideLength)
     }
     

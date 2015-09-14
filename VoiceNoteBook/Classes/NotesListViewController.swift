@@ -81,6 +81,7 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
         playUtil.stop()
     }
     
+    
     // Mark: - UITableViewDataSource
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -97,6 +98,19 @@ class NotesListViewController: UIViewController, UITableViewDelegate, UITableVie
         configureCell(cell!, atIndexPath: indexPath)
         
         return cell!
+    }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
+        let cell = tableView.cellForRowAtIndexPath(indexPath) as! NoteTableViewCell
+        
+        if self.playingFileName != nil && cell.fileName == self.playingFileName {
+            stopPlay()
+        } else {
+            playFile(cell.fileName!)
+        }
+
     }
     
     func configureCell(cell: NoteTableViewCell, atIndexPath indexPath: NSIndexPath) {

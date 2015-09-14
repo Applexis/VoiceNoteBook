@@ -23,7 +23,7 @@ class FileUtil: NSObject {
         
         if let directoryUrls =  NSFileManager.defaultManager().contentsOfDirectoryAtURL(documentsUrl, includingPropertiesForKeys: nil, options: NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, error: nil) {
             let files = directoryUrls.map(){ $0.lastPathComponent }.filter(){ $0.pathExtension == pathExtention }.map() { $0! }
-            return files
+            return files.reverse()
         }
         return []
     }
